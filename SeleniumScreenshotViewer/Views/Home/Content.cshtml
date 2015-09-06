@@ -1,0 +1,9 @@
+﻿@model SeleniumScreenshotDashboard.ViewModels.BlobContentViewModel
+@{
+    ViewBag.Title = "Content";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content">
+    @Html.Raw(Model.Html)
+</div>

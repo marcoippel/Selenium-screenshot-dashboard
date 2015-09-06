@@ -1,0 +1,5 @@
+/*.suo
+/SeleniumScreenshotViewer/obj
+/SeleniumScreenshotViewer/bin
+/packages
+SeleniumScreenshotViewer/AppSettings.config

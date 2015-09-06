@@ -1,0 +1,19 @@
+﻿@using SeleniumScreenshotDashboard.Models.Blob
+@model SeleniumScreenshotDashboard.ViewModels.BlobFolderViewModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<!-- /#sidebar-wrapper -->
+<!-- Page Content -->
+
+    @foreach (BlobUrl blob in Model.BlobSubMenuItems)
+    {
+        string style = blob.Name.Length > 6 && !blob.Name.EndsWith("html") ? "list" : "card";
+        <div class="@style" data-url="?folder=@blob.Url">
+            <span>@blob.Name</span>
+        </div>
+    }
+
+<!-- /#page-content-wrapper -->
