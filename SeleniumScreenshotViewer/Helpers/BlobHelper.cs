@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 
@@ -49,6 +50,25 @@ namespace SeleniumScreenshotDashboard.Helpers
             return file.DownloadText();
         }
 
+        /// <summary>
+        /// Gets the video.
+        /// </summary>
+        /// <param name="folderName">Name of the folder.</param>
+        /// <param name="fileName">Name of the file.</param>
+        /// <returns></returns>
+        public byte[] GetVideo(string folderName, string fileName)
+        {
+            CloudBlockBlob file = CloudStorageAccount.CreateCloudBlobClient().GetContainerReference(folderName).GetBlockBlobReference(fileName);
+            if (file != null)
+            {
+                Stream mem = new MemoryStream();
+                file.DownloadToStream(mem);
+                
+                return StreamHelper.ReadToEnd(mem);
+            }
+            return null;
+        }
+        
         /// <summary>
         /// Gets the sub menu items.
         /// </summary>
